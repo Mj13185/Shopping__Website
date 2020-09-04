@@ -1,0 +1,17 @@
+.nav__logo {
+  width: 100px;
+}
+.navbar {
+  background-color: aqua;
+  height: 50px;
+  align-content: center;
+}
+.navbar__right {
+  display: flex;
+  justify-content: space-around;
+  orientation: horizontal;
+}
+.dropdown {
+  margin-right: 10px;
+  justify-content: space-between;
+}
