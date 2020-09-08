@@ -1,17 +1,57 @@
-.nav__logo {
+.logo {
   width: 100px;
 }
-.navbar {
-  background-color: aqua;
-  height: 50px;
-  align-content: center;
-}
-.navbar__right {
+.nabvar {
   display: flex;
-  justify-content: space-around;
-  orientation: horizontal;
+  flex: 1;
 }
-.dropdown {
+.searchBar {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 2px 18px 64px 5px rgba(0, 0, 0, 0.29);
+  height: 12px;
+}
+.icon__search {
+  margin-left: -25px;
+}
+.headerRight {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.headerOption {
+  color: black;
+  text-decoration: none !important;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
   margin-right: 10px;
-  justify-content: space-between;
+}
+
+.header__optionOne {
+  font-size: 10px;
+}
+.header__optionTwo {
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: -5px;
+}
+.icon__headerRight > .MuiSvgIcon-root {
+  margin-left: 10px;
+  font-size: 1.8rem;
+}
+
+.icon__headerRight {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+a:-webkit-any-link {
+  color: black;
+  text-decoration: none !important;
 }

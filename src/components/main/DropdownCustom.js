@@ -5,7 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./DropdownCustom.css";
 
-function DropdownCustom() {
+function DropdownCustom(props) {
+  const items_Men = ["Jeans", "Top"];
+  const listItems_men = items_Men.map((item) => (
+    <Dropdown.Item>{item}</Dropdown.Item>
+  ));
+
   return (
     <div>
       <Dropdown className="dropdown">
@@ -14,13 +19,9 @@ function DropdownCustom() {
           variant="success"
           id="dropdown-basic"
         >
-          Dropdown Button
+          {props.title}
         </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-        </Dropdown.Menu>
+        <Dropdown.Menu>{listItems_men}</Dropdown.Menu>
       </Dropdown>
     </div>
   );
