@@ -8,6 +8,7 @@ function HomePage() {
       {/*  Carousel  */}
       <div className="carousel">
         <CarouselComp />
+        
       </div>
       {/* preview*/}
     </div>

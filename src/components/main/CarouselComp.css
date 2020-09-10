@@ -1,11 +1,15 @@
 .jumbotron {
   padding: 0px;
 }
+.carousel__head {
+  display: flex;
+  flex-direction: row;
+}
+
 .carousel-item,
 .carousel-inner {
   position: relative;
-  width: 100%;
-  height: 500px;
+  background-color: rgb(64, 173, 209);
 }
 
 h2 {
@@ -24,5 +28,27 @@ h2 span {
 
 .offer__carouselOne {
   font-weight: 100;
-  font: normal 24px/45px Helvetica, Sans-Serif;
+  font: normal 20px/45px Helvetica, Sans-Serif;
+}
+.offer__carouselTwo {
+  font-weight: 800;
+  font: bold 24px/45px Helvetica, Sans-Serif;
+}
+
+.offer__carouselThree {
+  font-weight: 200;
+  font: normal 14px/16px Helvetica, Sans-Serif;
+  letter-spacing: 0px;
+}
+
+.btn,
+.btn-success.focus {
+  background-color: #fe3638;
+  color: white;
+  margin-left: 10px;
+  margin-top: 10px;
+  box-shadow: 2px 18px 64px 5px rgba(0, 0, 0, 0.29);
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
 }

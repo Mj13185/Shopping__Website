@@ -13,13 +13,17 @@
   box-shadow: 2px 18px 64px 5px rgba(0, 0, 0, 0.29);
   height: 12px;
 }
+.navbar-collapse {
+  flex-grow: unset;
+}
+
 .icon__search {
   margin-left: -25px;
 }
 .headerRight {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   align-items: center;
 }
 

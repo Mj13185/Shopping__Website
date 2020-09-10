@@ -7,20 +7,24 @@ import {
   LocalMallOutlined,
 } from "@material-ui/icons";
 
+import SignInPage from "../signIn/SignInPage";
+
 import "../../bootstrap.min.css";
 import "./Header.css";
 
 class Header extends React.Component {
-  /* state = {
-    isOpen: false,
+  state = { modalShow: false };
+
+  toggleDropdown = () => {
+    this.setState({ modalShow: !this.state.modalShow }, function () {
+      console.log(this.state.number);
+    });
   };
 
-  toggleOpen = () => this.setState({ isOpen: !this.state.isOpen });*/
   render() {
-    //  const menuClass = `dropdown-menu${this.state.isOpen ? " show" : ""}`;
-
+    const { modalShow } = this.state;
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar sticky-top navbar-expand-md navbar-light bg-light">
         {/* Logo */}
         <Link to="/">
           <img
@@ -29,6 +33,15 @@ class Header extends React.Component {
             alt="logo"
           />
         </Link>
+        <div className="searchBar">
+          <input
+            className="form-control border-0"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <SearchRounded className="icon__search" />
+        </div>
         {/* responsive menu toggle */}
         <button
           className="navbar-toggler"
@@ -41,29 +54,21 @@ class Header extends React.Component {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           {/** Search Bar */}
-          <div className="searchBar">
-            <input
-              className="form-control border-0"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <SearchRounded className="icon__search" />
-          </div>
-
           {/** Links */}
-
           <div className="headerRight">
             <Link to="/wishlist">
               <div className="icon__headerRight">
                 <FavoriteBorder />
               </div>
             </Link>
-            <Link to="/">
-              <div className="icon__headerRight">
+            <Link
+              onClick={this.toggleDropdown}
+              isOpen={modalShow}
+              data-toggle="modal"
+            >
+              <div className="icon__headerRight" data-toggle="modal">
                 <PersonOutline />
                 <div className="headerOption">
                   <span className="header__optionOne">Hello, sign in</span>
@@ -71,6 +76,8 @@ class Header extends React.Component {
                 </div>
               </div>
             </Link>
+            <SignInPage show={modalShow} onHide={this.toggleDropdown} />
+
             <Link to="/">
               <div className="icon__headerRight">
                 <LocalMallOutlined />
