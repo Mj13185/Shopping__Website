@@ -2,30 +2,35 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {
   SearchRounded,
-  FavoriteBorder,
+  BookmarkBorder,
   PersonOutline,
   LocalMallOutlined,
 } from "@material-ui/icons";
 
-import SignInPage from "../signIn/SignInPage";
+import ModalLogin from "../signIn/ModalLogin";
 
 import "../../bootstrap.min.css";
 import "./Header.css";
 
 class Header extends React.Component {
   state = { modalShow: false };
+  state = { isClicked: false };
+
+  handleOnclick = () => {
+    this.setState({ isClicked: !this.state.isClicked });
+  };
 
   toggleDropdown = () => {
-    this.setState({ modalShow: !this.state.modalShow }, function () {
-      console.log(this.state.number);
-    });
+    this.setState({ modalShow: !this.state.modalShow });
   };
 
   render() {
     const { modalShow } = this.state;
+    const { isClicked } = this.state;
+
     return (
       <nav className="navbar sticky-top navbar-expand-md navbar-light bg-light">
-        {/* Logo */}
+        {/* ********************Logo********************* */}
         <Link to="/">
           <img
             className="logo"
@@ -33,6 +38,19 @@ class Header extends React.Component {
             alt="logo"
           />
         </Link>
+
+        {/** *****************Header Catogery************* */}
+        <div
+          className="headerLeft collapse navbar-collapse"
+          id="navbarSupportedContent"
+        >
+          <span className="header__catogery">MEN</span>
+          <span className="header__catogery">WOMEN</span>
+          <span className="header__catogery">KIDS</span>
+          <span className="header__catogery">OFFERS</span>
+        </div>
+        {/** *****************Search Bar************* */}
+
         <div className="searchBar">
           <input
             className="form-control border-0"
@@ -42,6 +60,7 @@ class Header extends React.Component {
           />
           <SearchRounded className="icon__search" />
         </div>
+
         {/* responsive menu toggle */}
         <button
           className="navbar-toggler"
@@ -49,20 +68,14 @@ class Header extends React.Component {
           data-toggle="collapse"
           data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
-          aria-expanded="false"
           aria-label="Toggle navigation"
+          onClick={this.handleOnclick}
+          isOpen={isClicked}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          {/** Search Bar */}
-          {/** Links */}
           <div className="headerRight">
-            <Link to="/wishlist">
-              <div className="icon__headerRight">
-                <FavoriteBorder />
-              </div>
-            </Link>
             <Link
               onClick={this.toggleDropdown}
               isOpen={modalShow}
@@ -70,23 +83,33 @@ class Header extends React.Component {
             >
               <div className="icon__headerRight" data-toggle="modal">
                 <PersonOutline />
-                <div className="headerOption">
-                  <span className="header__optionOne">Hello, sign in</span>
-                  <span className="header__optionTwo">My Account</span>
-                </div>
+                <span className="header__optionOne">profile</span>
               </div>
             </Link>
-            <SignInPage show={modalShow} onHide={this.toggleDropdown} />
 
-            <Link to="/">
-              <div className="icon__headerRight">
-                <LocalMallOutlined />
-                <div className="headerOption">
-                  <span className="header__optionOne">Your Cart</span>
-                  <span className="header__optionTwo">Checkout</span>
-                </div>
+            <Link
+            /*onClick={this.toggleDropdown}
+              isOpen={modalShow}
+              data-toggle="modal" */
+            >
+              <div className="icon__headerRight" data-toggle="modal">
+                <BookmarkBorder />
+                <span className="header__optionOne">wishlist</span>
               </div>
             </Link>
+
+            <Link
+            /* onClick={this.toggleDropdown}
+              isOpen={modalShow}
+              data-toggle="modal"*/
+            >
+              <div className="icon__headerRight" data-toggle="modal">
+                <LocalMallOutlined />
+                <span className="header__optionOne">cart</span>
+              </div>
+            </Link>
+
+            <ModalLogin show={modalShow} onHide={this.toggleDropdown} />
           </div>
         </div>
       </nav>
