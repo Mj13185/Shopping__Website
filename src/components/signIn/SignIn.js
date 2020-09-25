@@ -85,44 +85,76 @@ class SignIn extends Component {
     return (
       <Modal.Body>
         <div>
-          <Container fluid="sm" className="mt-3">
+          <Container
+            style={{ display: "flex", flex: "1", flexDirection: "column" }}
+          >
+            <h4 style={{ alignSelf: "center" }}> Sign In</h4>
+
             <Row className="justify-content-center">
-              <Col xs={12} md={6} lg={5}>
-                <h2 className="mb-3">Login</h2>
+              <Col>
                 <Form className="form" onSubmit={this.onSignInSubmit}>
                   <div id="recaptcha-container"></div>
-                  <Form.Group>
+                  <Form.Group
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "center",
+                      alignItems: " center",
+                    }}
+                  >
                     <Form.Control
                       type="tel"
                       name="mobile"
                       placeholder="Mobile Number"
+                      style={{ width: "60%" }}
                       onChange={this.onChangeHandler}
                       required
                     />
+                    <span
+                      onClick={this.onSignInSubmit}
+                      style={{
+                        fontSize: "12px",
+                        marginLeft: "-55px",
+                        color: "blue",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Send OTP
+                    </span>
                   </Form.Group>
-                  <Button button="Submit" type="submit">
-                    {" "}
-                    Submit{" "}
-                  </Button>
                 </Form>
               </Col>
             </Row>
             <Row className="justify-content-center">
-              <Col xs={12} md={6} lg={5}>
-                <h2 className="mb-3">Enter OTP</h2>
+              <Col>
                 <Form className="form" onSubmit={this.onSubmitOtp}>
-                  <Form.Group>
+                  <Form.Group
+                    style={{
+                      display: "flex",
+                      flex: "1",
+                      justifyContent: " center",
+                      alignItems: "center",
+                    }}
+                  >
                     <Form.Control
                       id="otp"
-                      type="number"
+                      type="text"
                       name="otp"
+                      style={{
+                        width: "60%",
+                      }}
                       placeholder="OTP"
                       onChange={this.onChangeHandler}
                     />
                   </Form.Group>
-                  <Button button="submit" type="submit">
-                    Submit
-                  </Button>
+                  <div
+                    className="submitBtn"
+                    style={{ display: "flex", justifyContent: "center" }}
+                  >
+                    <Button button="submit" type="submit">
+                      Submit
+                    </Button>
+                  </div>
                 </Form>
               </Col>
             </Row>
